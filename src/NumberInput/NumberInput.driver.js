@@ -5,12 +5,15 @@ import { tickerDriverFactory } from '../Input/Ticker/Ticker.driver';
 export const numberInputDriverFactory = base => {
   const getTickerDriver = () =>
     tickerDriverFactory(base.$('[data-hook="number-input-ticker"]'));
-
+  const getInputElement = () => base.$('data-hook="wsr-input"');
   return {
     ...baseUniDriverFactory(base),
 
-    /** Get the current count */
+    /** Click on ticker up */
     clickOnIncrement: () => getTickerDriver().clickUp(),
+    /** Click on ticker down */
     clickOnDecrement: () => getTickerDriver().clickDown(),
+    /** Input value to component */
+    enterValue: value => getInputElement().enterValue(value),
   };
 };

@@ -1,6 +1,5 @@
 import React from 'react';
 import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
-
 import NumberInput from './NumberInput';
 import { numberInputPrivateDriverFactory } from './NumberInput.driver.private';
 
@@ -15,11 +14,14 @@ describe('NumberInput', () => {
   it('should increment value', async () => {
     const value = 0,
       onChange = jest.fn();
-    const driver = createDriver(
-      <NumberInput onChange={onChange} value={value} />,
-    );
+    const div = document.createElement('div');
+    document.body.appendChild(div);
+    const input = <NumberInput onChange={onChange} value={value} />;
+    const driver = createDriver(input);
     await driver.clickOnIncrement();
-    expect(onChange).toHaveBeenCalledWith('1');
+    expect(onChange.mock.calls[0][0].target).toEqual(
+      expect.objectContaining({ value: '1' }),
+    );
   });
 
   it('should decrement value', async () => {
@@ -29,7 +31,9 @@ describe('NumberInput', () => {
       <NumberInput onChange={onChange} value={value} />,
     );
     await driver.clickOnDecrement();
-    expect(onChange).toHaveBeenCalledWith('-1');
+    expect(onChange.mock.calls[0][0].target).toEqual(
+      expect.objectContaining({ value: '-1' }),
+    );
   });
 
   it('should increment by given step', async () => {
@@ -40,7 +44,9 @@ describe('NumberInput', () => {
       <NumberInput onChange={onChange} value={value} step={step} />,
     );
     await driver.clickOnIncrement();
-    expect(onChange).toHaveBeenCalledWith('0.1');
+    expect(onChange.mock.calls[0][0].target).toEqual(
+      expect.objectContaining({ value: '0.1' }),
+    );
   });
 
   it('should decrement by given step', async () => {
@@ -51,7 +57,9 @@ describe('NumberInput', () => {
       <NumberInput onChange={onChange} value={value} step={step} />,
     );
     await driver.clickOnDecrement();
-    expect(onChange).toHaveBeenCalledWith('-0.1');
+    expect(onChange.mock.calls[0][0].target).toEqual(
+      expect.objectContaining({ value: '-0.1' }),
+    );
   });
 
   it('should not allow incrementing above max value', async () => {

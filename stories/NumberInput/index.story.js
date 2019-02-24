@@ -1,55 +1,52 @@
-import React from 'react';
 import { storySettings } from './storySettings';
-import LiveCodeExample from '../utils/Components/LiveCodeExample';
+import {
+  tab,
+  code as baseCode,
+  importExample,
+  api,
+  testkit,
+  playground,
+} from 'wix-storybook-utils/Sections';
+import { baseScope } from '../utils/Components/LiveCodeExample';
+import * as examples from './examples';
 
-import NumberInput from '../../src/NumberInput';
+import NumberInput from 'wix-style-react/NumberInput';
 
-const example = `
-class NumberField extends React.Component {
-  constructor() {
-    this.state = {
-      value: 0,
-    };
-  }
+const code = config => baseCode({ components: baseScope, ...config });
 
-  render() {
-    const onChange = e => this.setState({ value: e.target.value });
-
-    return (
-      <FormField label="Number">
-        <NumberInput
-          {...this.props}
-          value={this.state.value}
-          onChange={onChange}
-        />
-      </FormField>
-    );
-  }
-}
-`;
 export default {
   category: storySettings.kind,
   storyName: storySettings.storyName,
-
   component: NumberInput,
   componentPath: '../../src/NumberInput/NumberInput.js',
 
   componentProps: {
-    dataHook: storySettings.dataHook,
+    step: 2,
+    min: -5,
+    max: 5,
   },
 
-  exampleProps: {
-    // Put here presets of props, for more info:
-    // https://github.com/wix/wix-ui/blob/master/packages/wix-storybook-utils/docs/usage.md#using-list
-  },
+  sections: [
+    tab({
+      title: 'Usage',
+      sections: [
+        importExample({
+          source: "import NumberInput from 'wix-style-react/NumberInput'",
+        }),
+        code({ title: 'Standard', source: examples.standard }),
+        code({ title: 'Error', source: examples.error }),
+        code({ title: 'Loader', source: examples.loader }),
+        code({ title: 'Affix', source: examples.affix }),
+        code({ title: 'Icon Affix', source: examples.iconAffix }),
+        code({ title: 'Sizes', source: examples.sizes }),
+        code({ title: 'Rounded', source: examples.rounded }),
+      ],
+    }),
 
-  examples: (
-    <div style={{ maxWidth: 627 }}>
-      <LiveCodeExample
-        compact
-        title="Live code example"
-        initialCode={example}
-      />
-    </div>
-  ),
+    ...[
+      { title: 'API', sections: [api()] },
+      { title: 'TestKit', sections: [testkit()] },
+      { title: 'Playground', sections: [playground()] },
+    ].map(tab),
+  ],
 };

@@ -112,6 +112,7 @@ class Input extends Component {
       autocomplete,
       min,
       max,
+      step,
       required,
       error,
       errorMessage,
@@ -174,6 +175,7 @@ class Input extends Component {
       <input
         min={min}
         max={max}
+        step={step}
         data-hook="wsr-input"
         style={{ textOverflow }}
         ref={this.extractRef}
@@ -552,10 +554,13 @@ Input.propTypes = {
   required: PropTypes.bool,
 
   /** Minimum value input can have - similar to html5 min attribute */
-  min: PropTypes.string,
+  min: PropTypes.number,
 
   /** Maximum value input can have - similar to html5 max attribute */
-  max: PropTypes.string,
+  max: PropTypes.number,
+
+  /** Step steps to increment/decrement - similar to html5 step attribute */
+  step: PropTypes.number,
 };
 
 export default Input;

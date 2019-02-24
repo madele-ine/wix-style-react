@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import Input from '../Input';
 import WixComponent from '../BaseComponents/WixComponent';
 
@@ -39,15 +38,22 @@ class NumberInput extends WixComponent {
   }
 
   _triggerOnChange(value) {
+    const { onChange } = this.props;
     const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
       window.HTMLInputElement.prototype,
       'value',
     ).set;
     nativeInputValueSetter.call(this.inputDOM, value);
-    const event = new Event('change', { bubbles: true });
-    event.simulated = true;
-    this.inputDOM.dispatchEvent(event);
+    onChange({ target: this.inputDOM });
   }
+
+  _getInputRef = ref => {
+    const { inputRef } = this.props;
+    this.inputDOM = ref;
+    if (inputRef) {
+      inputRef(ref);
+    }
+  };
 
   render() {
     const { dataHook, value, onChange, ...props } = this.props;
@@ -59,7 +65,7 @@ class NumberInput extends WixComponent {
           type="number"
           value={value}
           onChange={onChange}
-          inputRef={ref => (this.inputDOM = ref)}
+          inputRef={this._getInputRef}
           suffix={
             <Input.Ticker
               onUp={this.increment}
@@ -75,7 +81,13 @@ class NumberInput extends WixComponent {
 
 NumberInput.propTypes = {
   ...Input.propTypes,
-  /** Step for each ticker click  */
+  /** Minimum value input can have - similar to html5 min attribute */
+  min: PropTypes.number,
+
+  /** Maximum value input can have - similar to html5 max attribute */
+  max: PropTypes.number,
+
+  /** Step steps to increment/decrement - similar to html5 step attribute */
   step: PropTypes.number,
 };
 
