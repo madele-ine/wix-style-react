@@ -134,3 +134,9 @@ import { numberInputDriverFactory } from '../src/NumberInput/NumberInput.driver'
 export const numberInputTestkitFactory = puppeteerUniTestkitFactoryCreator(
   numberInputDriverFactory,
 );
+
+import { noBorderInputDriverFactory } from '../src/NoBorderInput/NoBorderInput.puppeteer.driver';
+
+export const noBorderInputTestkitFactory = puppeteerTestkitFactoryCreator(
+  noBorderInputDriverFactory,
+);
