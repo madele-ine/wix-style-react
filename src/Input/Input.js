@@ -356,9 +356,6 @@ class Input extends Component {
           writable: true,
           value: this.input,
         });
-        // event = {
-        //   target: this.input,
-        // };
       }
       /* FIXME: The event (e) could be any event type, and even it's target may not be the input.
        * So it would be better to do e.target = this.input.
@@ -369,10 +366,6 @@ class Input extends Component {
         writable: false,
         value: { ...event.target, value: '' },
       });
-      // event.target = {
-      //   ...event.target,
-      //   value: '',
-      // };
       this._onChange(event);
     }
 
