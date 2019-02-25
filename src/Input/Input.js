@@ -351,19 +351,28 @@ class Input extends Component {
          * There is this react-trigger-changes library which is a hack for testing only (https://github.com/vitalyq/react-trigger-change).
          * The solution of creating a new pseudo event object, works for passing along tha target.value, but e.preventDefault() and e.stopPropagation() won't work.
          */
-        event = {
-          target: this.input,
-        };
+        event = new Event('change', { bubbles: true });
+        Object.defineProperty(event, 'target', {
+          writable: true,
+          value: this.input,
+        });
+        // event = {
+        //   target: this.input,
+        // };
       }
       /* FIXME: The event (e) could be any event type, and even it's target may not be the input.
        * So it would be better to do e.target = this.input.
        * We don't use `clear` in WSR except in InputWithTags which does not pass an event, so it's ok.
        * But if some consumer is using <Input/> directly, then this might be a breaking change.
        */
-      event.target = {
-        ...event.target,
-        value: '',
-      };
+      Object.defineProperty(event, 'target', {
+        writable: false,
+        value: { ...event.target, value: '' },
+      });
+      // event.target = {
+      //   ...event.target,
+      //   value: '',
+      // };
       this._onChange(event);
     }
 

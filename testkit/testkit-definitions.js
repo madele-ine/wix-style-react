@@ -152,6 +152,8 @@ module.exports = {
 
   Notification: {},
 
+  NumberInput: { unidriver: true },
+
   FloatingNotification: { unidriver: true, drivers: ['enzyme'] },
 
   DatePicker: {

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Input from '../Input/Input';
+import Input from '../Input';
 import WixComponent from '../BaseComponents/WixComponent';
 
 class NumberInput extends WixComponent {
@@ -44,7 +44,12 @@ class NumberInput extends WixComponent {
       'value',
     ).set;
     nativeInputValueSetter.call(this.inputDOM, value);
-    onChange({ target: this.inputDOM });
+    const event = new Event('change', { bubbles: true });
+    Object.defineProperty(event, 'target', {
+      writable: false,
+      value: this.inputDOM,
+    });
+    onChange(event);
   }
 
   _getInputRef = ref => {
