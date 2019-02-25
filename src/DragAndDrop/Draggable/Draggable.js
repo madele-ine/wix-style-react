@@ -78,7 +78,7 @@ export class Draggable extends React.Component {
     this.resetDelayState();
   };
 
-  canDrag = ({ id, index, containerId, groupName, item, canDrag }) => {
+  canDrag = ({ id, index, containerId, groupName, item }) => {
     const canDragByDelay = !!this.props.delay ? !this.state.delayed : true;
     const propsCanDrag = this.props.canDrag
       ? this.props.canDrag({

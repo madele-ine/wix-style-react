@@ -14,7 +14,7 @@ import Button from '../Button';
 import { sortableListTestkitFactory } from '../../testkit';
 import { sortableListTestkitFactory as enzymeSortableListTestkitFactory } from '../../testkit/enzyme';
 
-import privateSortableListDriver from './SortableList.driver.private';
+import privateSortableListDriver from './SortableList.private.driver';
 
 import SortableList from './SortableList';
 
@@ -339,14 +339,29 @@ describe('SortableList', () => {
   });
 
   it('should contain prop to set custom  class (`isListInDragState`) while dragging', () => {
-    const renderItem = ({item, isListInDragState}) => <div className={isListInDragState ? 'isListInDragState' : null} data-hook={item.id}>{item.text}</div>;
-    const wrapper = configureWrapper({renderItem});
+    const renderItem = ({ item, isListInDragState }) => (
+      <div
+        className={isListInDragState ? 'isListInDragState' : null}
+        data-hook={item.id}
+      >
+        {item.text}
+      </div>
+    );
+    const wrapper = configureWrapper({ renderItem });
     const driver = createDriver(wrapper);
     const elem = ReactDOM.findDOMNode(wrapper);
     driver.beginDrag('1');
-    expect(elem.querySelector('[data-hook="1"]').classList.contains('isListInDragState')).toBeTruthy();
+    expect(
+      elem
+        .querySelector('[data-hook="1"]')
+        .classList.contains('isListInDragState'),
+    ).toBeTruthy();
     driver.endDrag();
-    expect(elem.querySelector('[data-hook="1"]').classList.contains('isListInDragState')).toBeFalsy();
+    expect(
+      elem
+        .querySelector('[data-hook="1"]')
+        .classList.contains('isListInDragState'),
+    ).toBeFalsy();
   });
 
   describe('with delay prop', () => {
