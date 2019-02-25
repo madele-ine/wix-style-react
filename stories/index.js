@@ -147,6 +147,7 @@ import './Builders/ContactItemBuilder';
 // Tests
 import './Typography/TypographyTestStories';
 import './Input/InputTestStories';
+import './NumberInput/NumberInputTestStories';
 import './TimeInput/testStory';
 import './components/Page/PageTestStories.js'; // Tests/2. Layout/2.5 + Page/
 import './components/Page/PageTestStoriesDeprecated.js'; // Tests/2. Layout/2.5 + Page/Deprecated

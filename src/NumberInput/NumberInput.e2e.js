@@ -1,43 +1,29 @@
 import {
   createStoryUrl,
   waitForVisibilityOf,
-  scrollToElement,
 } from 'wix-ui-test-utils/protractor';
 
 import { eyesItInstance } from '../../test/utils/eyes-it';
 import { numberInputTestkitFactory } from '../../testkit/protractor';
-import { storySettings } from '../../stories/NumberInput/storySettings';
-
-const eyes = eyesItInstance();
+import { getTestStoryKind, Category } from '../../stories/storiesHierarchy';
 
 describe('NumberInput', () => {
-  const storyUrl = createStoryUrl({
-    kind: storySettings.category,
-    story: storySettings.storyName,
+  const eyes = eyesItInstance();
+  const kind = getTestStoryKind({
+    category: Category.COMPONENTS,
+    storyName: 'NumberInput',
   });
 
-  const createDriver = async (dataHook = storySettings.dataHook) => {
-    const driver = numberInputTestkitFactory({ dataHook });
-
+  eyes.it('should render NumberInput with veriations', async () => {
+    const driver = numberInputTestkitFactory({ dataHook: 'wsr-input' });
+    const url = createStoryUrl({
+      kind,
+      story: '1. NumberInput different states',
+    });
+    await browser.get(url);
     await waitForVisibilityOf(
-      await driver.element(),
-      `Cannot find <NumberInput/> component with dataHook of ${dataHook}`,
+      driver.element(),
+      'Cannot find NumberInput component',
     );
-
-    await scrollToElement(await driver.element());
-
-    return driver;
-  };
-
-  beforeAll(async () => {
-    await browser.get(storyUrl);
-  });
-
-  eyes.it('should render', async () => {
-    await createDriver();
-  });
-
-  eyes.it('should render live example', async () => {
-    await createDriver('story-number-input-live-example');
   });
 });
