@@ -14,7 +14,7 @@ describe('NumberInput', () => {
     storyName: 'NumberInput',
   });
 
-  eyes.it('should render NumberInput with veriations', async () => {
+  eyes.it('should render NumberInput with variations', async () => {
     const driver = numberInputTestkitFactory({ dataHook: 'wsr-input' });
     const url = createStoryUrl({
       kind,
