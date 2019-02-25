@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Input from '../Input';
+import Input from '../Input/Input';
 import WixComponent from '../BaseComponents/WixComponent';
 
 class NumberInput extends WixComponent {
@@ -56,7 +56,7 @@ class NumberInput extends WixComponent {
   };
 
   render() {
-    const { dataHook, value, onChange, ...props } = this.props;
+    const { dataHook, suffix, value, onChange, ...props } = this.props;
 
     return (
       <div data-hook={dataHook}>
@@ -67,11 +67,14 @@ class NumberInput extends WixComponent {
           onChange={onChange}
           inputRef={this._getInputRef}
           suffix={
-            <Input.Ticker
-              onUp={this.increment}
-              onDown={this.decrement}
-              dataHook="number-input-ticker"
-            />
+            <Input.Group>
+              {suffix}
+              <Input.Ticker
+                onUp={this.increment}
+                onDown={this.decrement}
+                dataHook="number-input-ticker"
+              />
+            </Input.Group>
           }
         />
       </div>

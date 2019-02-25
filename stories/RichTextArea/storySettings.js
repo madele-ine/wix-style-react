@@ -1,7 +1,7 @@
 import { Category } from '../storiesHierarchy';
 
 export const storySettings = {
-  storyName: 'RichTextArea',
+  storyName: 'Rich Text Area',
   indexCategory: Category.INPUTS,
   apiCategory: Category.COMPONENTS,
   dataHook: 'story-richtextarea',

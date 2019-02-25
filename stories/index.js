@@ -28,7 +28,7 @@ import './AddItem/AddItem.story'; // 2.8 AddItem
 import './TextInput/index.story'; // 3.1. Text Input
 import './TextArea/index.story'; // 3.2 Text Area
 import './RichTextArea/index.story.js'; // 3.2b + RichTextArea
-import './FieldWithSelectionComposite'; // 3.3 Field With Selection
+import './NumberInput.ux/index.story.js'; // 3.4 TimeInput
 import './TimeInput/TimeInput.story.js'; // 3.4 TimeInput
 import './DatePicker.story.js'; // 3.6 DatePicker
 import './Range'; // 3.7 Range
@@ -37,6 +37,7 @@ import './MultiSelectComposite'; // 3.8 + MultiSelectComposite
 import './Search/index.story'; // 3.9 Search
 import './ImageViewer/index.story'; // 3.10 ImageViewer
 import './FilePicker/index.story'; // 3.10 + FilePicker
+import './FieldWithSelectionComposite'; // 3.3 Field With Selection
 
 // 4. Selection
 import './Dropdown/DropdownStory.js'; // 4.1 Dropdown
