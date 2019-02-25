@@ -3,36 +3,14 @@ export const standard = `
   <Cell>
     <NumberInput />
   </Cell>
-  <Cell>
-    <NumberInput forceHover />
-  </Cell>
-  <Cell>
-    <NumberInput forceFocus />
-  </Cell>
 </Layout>
 `;
 
 export const error = `
 <Layout>
   <Cell>
-    <NumberInput status={'error'}/>
-  </Cell>
-  <Cell>
-    <NumberInput status={'error'} forceHover />
-  </Cell>
-  <Cell>
-    <NumberInput status={'error'} forceFocus />
-  </Cell>
-</Layout>
-`;
-
-export const loader = `
-<Layout>
-  <Cell>
-    <NumberInput status="loading" />
-  </Cell>
-  <Cell>
-    <NumberInput status="loading" statusMessage="Loading some data..." />
+    <NumberInput status={'error'}
+                 statusMessage="I'm an error message..."/>
   </Cell>
 </Layout>
 `;
@@ -40,21 +18,21 @@ export const loader = `
 export const affix = `
 <Layout>
   <Cell>
-    <NumberInput prefix={<Input.Affix>https://</Input.Affix>} />
+    <NumberInput prefix={<Input.Affix>#</Input.Affix>} />
   </Cell>
   <Cell>
     <NumberInput suffix={<Input.Affix>$</Input.Affix>} />
   </Cell>
   <Cell>
     <NumberInput
-      prefix={<Input.Affix>https://</Input.Affix>}
-      suffix={<Input.Affix>.com</Input.Affix>}
+      prefix={<Input.Affix>Items:</Input.Affix>}
+      suffix={<Input.Affix>#</Input.Affix>}
     />
   </Cell>
   <Cell>
     <NumberInput
-      prefix={<Input.Affix>@</Input.Affix>}
-      suffix={<Input.Affix>$</Input.Affix>}
+      prefix={<Input.Affix>Items:</Input.Affix>}
+      suffix={<Input.Affix>#</Input.Affix>}
       status="error"
     />
   </Cell>
@@ -67,7 +45,7 @@ export const iconAffix = `
     <NumberInput
       prefix={
         <Input.IconAffix>
-          <Date />
+          <Contrast />
         </Input.IconAffix>
       }
     />
@@ -85,7 +63,7 @@ export const iconAffix = `
     <NumberInput
       prefix={
         <Input.IconAffix>
-          <Date />
+          <Contrast />
         </Input.IconAffix>
       }
       suffix={
@@ -99,7 +77,7 @@ export const iconAffix = `
     <NumberInput
       prefix={
         <Input.IconAffix>
-          <Date />
+          <Contrast />
         </Input.IconAffix>
       }
       suffix={

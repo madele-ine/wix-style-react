@@ -21,7 +21,7 @@ export default {
   componentPath: '../../src/NumberInput/NumberInput.js',
 
   componentProps: {
-    step: 2,
+    step: 1,
     min: -5,
     max: 5,
   },
@@ -39,7 +39,6 @@ export default {
         }),
         code({ title: 'Standard', source: examples.standard }),
         code({ title: 'Error', source: examples.error }),
-        code({ title: 'Loader', source: examples.loader }),
         code({ title: 'Affix', source: examples.affix }),
         code({ title: 'Icon Affix', source: examples.iconAffix }),
         code({ title: 'Sizes', source: examples.sizes }),

@@ -39,14 +39,6 @@ export const affix = `
 </Layout>
 `;
 
-export const charLimit = `
-<FormField label="Field label">
-  {({setCharactersLeft}) =>
-    <NumberInput onChange={event => setCharactersLeft(100 - event.target.value.length)} placeholder="Placeholder"/>
-  }
-</FormField>
-`;
-
 export const required = `
 <FormField label="Field label" required>
   <NumberInput size="normal" placeholder="Placeholder" required/>
@@ -57,25 +49,19 @@ export const position = `
 <Layout>
   <Cell>
     <FormField label="Field label" infoContent="Tooltip text" required>
-      {({setCharactersLeft}) =>
-        <NumberInput onChange={event => setCharactersLeft(100 - event.target.value.length)} placeholder="Placeholder" required/>
-      }
+        <NumberInput placeholder="Placeholder" required/>
     </FormField>
   </Cell>
 
   <Cell>
     <FormField label="Field label" infoContent="Tooltip text" labelPlacement="left" required>
-      {({setCharactersLeft}) =>
-        <NumberInput onChange={event => setCharactersLeft(100 - event.target.value.length)} placeholder="Placeholder" required/>
-      }
+        <NumberInput placeholder="Placeholder" required/>
     </FormField>
   </Cell>
 
   <Cell>
     <FormField label="Field label" infoContent="Tooltip text" labelPlacement="right" required>
-      {({setCharactersLeft}) =>
-        <NumberInput onChange={event => setCharactersLeft(100 - event.target.value.length)} placeholder="Placeholder" required/>
-      }
+        <NumberInput placeholder="Placeholder" required/>
     </FormField>
   </Cell>
 </Layout>

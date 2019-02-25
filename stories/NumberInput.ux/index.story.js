@@ -99,12 +99,6 @@ export default {
       },
 
       {
-        title: 'Char limit',
-        text: 'It is allowed to set maximum number of characters',
-        source: examples.charLimit,
-      },
-
-      {
         title: 'Required Info',
         text: 'You can add an asterisk if the field is required',
         source: examples.required,

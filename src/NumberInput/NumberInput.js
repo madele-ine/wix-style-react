@@ -19,11 +19,11 @@ class NumberInput extends WixComponent {
     return true;
   }
 
-  increment = () => {
+  _increment = () => {
     this._applyChange((value, step) => value + step);
   };
 
-  decrement = () => {
+  _decrement = () => {
     this._applyChange((value, step) => value - step);
   };
 
@@ -75,8 +75,8 @@ class NumberInput extends WixComponent {
             <Input.Group>
               {suffix}
               <Input.Ticker
-                onUp={this.increment}
-                onDown={this.decrement}
+                onUp={this._increment}
+                onDown={this._decrement}
                 dataHook="number-input-ticker"
               />
             </Input.Group>
