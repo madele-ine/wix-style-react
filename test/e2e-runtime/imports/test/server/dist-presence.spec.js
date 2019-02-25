@@ -1,5 +1,5 @@
 const formatErrorMessage = message => {
-  return `Module ${message.match(/dist(\w|\/)+/)[0]} not found`
+  return `Module ${message.match(/dist(\w|\/)+/)[0]} not found`;
 };
 
 const throwIfNotFound = error => {
@@ -11,9 +11,9 @@ const throwIfNotFound = error => {
 describe('testkit', () => {
   it('load teskit files', async () => {
     try {
-      require('../../../../../dist/testkit')
+      require('../../../../../dist/testkit');
     } catch (e) {
-      throwIfNotFound(e)
+      throwIfNotFound(e);
     }
   });
 });
@@ -21,9 +21,9 @@ describe('testkit', () => {
 describe('test utils', () => {
   it('load test utils files', async () => {
     try {
-      require('../../../../../dist/test/utils')
+      require('../../../../../dist/test/utils');
     } catch (e) {
-      throwIfNotFound(e)
+      throwIfNotFound(e);
     }
   });
 });
