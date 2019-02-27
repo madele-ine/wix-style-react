@@ -15,6 +15,10 @@ export default base => {
     getButtonTypes: async () => (await toolbarDriver(base)).getButtonTypes(),
     getContent: () => base.text(),
     clickBoldButton: async () => (await toolbarDriver(base)).clickBoldButton(),
+    clickItalicButton: async () =>
+      (await toolbarDriver(base)).clickItalicButton(),
+    clickUnderlineButton: async () =>
+      (await toolbarDriver(base)).clickUnderlineButton(),
     enterText: async text => {
       const textAreaNative = await getTextArea(base).getNative();
 

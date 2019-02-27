@@ -12,5 +12,7 @@ export default base => {
         (await button.attr('data-hook')).replace(/^richtextarea-button-/, ''),
       ),
     clickBoldButton: () => getButtonByType('bold').click(),
+    clickItalicButton: () => getButtonByType('italic').click(),
+    clickUnderlineButton: () => getButtonByType('underline').click(),
   };
 };

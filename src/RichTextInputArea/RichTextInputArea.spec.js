@@ -9,6 +9,9 @@ describe('RichTextInputArea', () => {
     richTextInputAreaPrivateDriverFactory,
   );
 
+  // Keeps the parsed HTML value
+  let currentValue;
+
   describe('Editor', () => {
     it('should render the text when `value` prop is plain text', async () => {
       const text = 'Some text';
@@ -58,15 +61,40 @@ describe('RichTextInputArea', () => {
       expect(await driver.getButtonTypes()).toEqual(buttons);
     });
 
-    it('should render text as bold after click the bold button', async () => {
-      let currentValue;
+    it('should render text as bold after clicking the bold button', async () => {
       const driver = createDriver(
         <RichTextInputArea onChange={value => (currentValue = value)} />,
       );
-      const typedText = 'Test';
+      const typedText = 'Bold';
       const expectedText = `<p><strong>${typedText}</strong></p>\n`;
 
       await driver.clickBoldButton();
+      await driver.enterText(typedText);
+
+      expect(currentValue).toBe(expectedText);
+    });
+
+    it('should render text as italic after clicking the italic button', async () => {
+      const driver = createDriver(
+        <RichTextInputArea onChange={value => (currentValue = value)} />,
+      );
+      const typedText = 'Italic';
+      const expectedText = `<p><em>${typedText}</em></p>\n`;
+
+      await driver.clickItalicButton();
+      await driver.enterText(typedText);
+
+      expect(currentValue).toBe(expectedText);
+    });
+
+    it('should render text with underline after clicking the underline button', async () => {
+      const driver = createDriver(
+        <RichTextInputArea onChange={value => (currentValue = value)} />,
+      );
+      const typedText = 'Underline';
+      const expectedText = `<p><ins>${typedText}</ins></p>\n`;
+
+      await driver.clickUnderlineButton();
       await driver.enterText(typedText);
 
       expect(currentValue).toBe(expectedText);
