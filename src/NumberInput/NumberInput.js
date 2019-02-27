@@ -28,7 +28,7 @@ class NumberInput extends WixComponent {
 
   _applyChange(operator) {
     const { value, onChange, step } = this.props,
-      numberValue = parseFloat(value),
+      numberValue = parseFloat(value || this.inputDOM.value) || 0,
       numberStep = step,
       updatedValue = operator(numberValue, numberStep);
     if (onChange && this._isInRange(updatedValue)) {
