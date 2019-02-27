@@ -26,6 +26,8 @@ class CloseButton extends Component {
     disabled: bool,
     /** string based data hook for testing */
     dataHook: string,
+    /** Button type */
+    type: oneOf(['button', 'submit', 'reset']),
   };
 
   static defaultProps = {
