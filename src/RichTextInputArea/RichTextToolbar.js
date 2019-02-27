@@ -20,6 +20,7 @@ import {
 } from '../new-icons/system';
 
 const RichTextToolbar = ({
+  dataHook,
   className,
   editorState,
   onBold,
@@ -156,7 +157,7 @@ const RichTextToolbar = ({
   ];
 
   return (
-    <div className={classNames(className, styles.root)}>
+    <div data-hook={dataHook} className={classNames(className, styles.root)}>
       {buttons.map((button, index) => {
         const {
           type,
