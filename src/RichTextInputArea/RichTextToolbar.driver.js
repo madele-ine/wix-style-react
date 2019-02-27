@@ -14,5 +14,8 @@ export default base => {
     clickBoldButton: () => getButtonByType('bold').click(),
     clickItalicButton: () => getButtonByType('italic').click(),
     clickUnderlineButton: () => getButtonByType('underline').click(),
+    clickUnorderedListButton: () =>
+      getButtonByType('unordered-list-item').click(),
+    clickOrderedListButton: () => getButtonByType('ordered-list-item').click(),
   };
 };

@@ -9,7 +9,7 @@ describe('RichTextInputArea', () => {
     richTextInputAreaPrivateDriverFactory,
   );
 
-  // Keeps the parsed HTML value
+  // Keeps the parsed HTML value on prop change
   let currentValue;
 
   describe('Editor', () => {
@@ -95,6 +95,32 @@ describe('RichTextInputArea', () => {
       const expectedText = `<p><ins>${typedText}</ins></p>\n`;
 
       await driver.clickUnderlineButton();
+      await driver.enterText(typedText);
+
+      expect(currentValue).toBe(expectedText);
+    });
+
+    it('should render text as bulleted list after clicking the bulleted list button', async () => {
+      const driver = createDriver(
+        <RichTextInputArea onChange={value => (currentValue = value)} />,
+      );
+      const typedText = 'Text';
+      const expectedText = `<ul>\n<li>${typedText}</li>\n</ul>\n`;
+
+      await driver.clickUnorderedListButton();
+      await driver.enterText(typedText);
+
+      expect(currentValue).toBe(expectedText);
+    });
+
+    it('should render text as numbered list after clicking the numbered list button', async () => {
+      const driver = createDriver(
+        <RichTextInputArea onChange={value => (currentValue = value)} />,
+      );
+      const typedText = 'Text';
+      const expectedText = `<ol>\n<li>${typedText}</li>\n</ol>\n`;
+
+      await driver.clickOrderedListButton();
       await driver.enterText(typedText);
 
       expect(currentValue).toBe(expectedText);

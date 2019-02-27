@@ -19,6 +19,10 @@ export default base => {
       (await toolbarDriver(base)).clickItalicButton(),
     clickUnderlineButton: async () =>
       (await toolbarDriver(base)).clickUnderlineButton(),
+    clickUnorderedListButton: async () =>
+      (await toolbarDriver(base)).clickUnorderedListButton(),
+    clickOrderedListButton: async () =>
+      (await toolbarDriver(base)).clickOrderedListButton(),
     enterText: async text => {
       const textAreaNative = await getTextArea(base).getNative();
 
