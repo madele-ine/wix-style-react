@@ -9,6 +9,20 @@ describe('RichTextInputArea', () => {
     richTextInputAreaPrivateDriverFactory,
   );
 
+  it('should render all supported buttons', async () => {
+    const buttons = [
+      'bold',
+      'italic',
+      'underline',
+      'link',
+      'unordered-list-item',
+      'ordered-list-item',
+    ];
+    const driver = createDriver(<RichTextInputArea />);
+
+    expect(await driver.getButtonTypes()).toEqual(buttons);
+  });
+
   it('should render the text when `value` prop is plain text', async () => {
     const text = 'Some text';
     const driver = createDriver(<RichTextInputArea value={text} />);

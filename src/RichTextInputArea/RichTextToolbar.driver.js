@@ -1,9 +1,13 @@
 import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
 
-export const getToolbar = base => base.$('[data-hook=richtextarea-toolbar]');
-
 export default base => {
+  const getButtons = () => base.$$(`[data-hook*="richtextarea-button"]`);
+
   return {
     ...baseUniDriverFactory(base),
+    getButtonTypes: () =>
+      getButtons().map(async button =>
+        (await button.attr('data-hook')).replace(/^richtextarea-button-/, ''),
+      ),
   };
 };
