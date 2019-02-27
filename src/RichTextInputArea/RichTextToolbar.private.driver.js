@@ -17,5 +17,15 @@ export default base => {
     clickUnorderedListButton: () =>
       getButtonByType('unordered-list-item').click(),
     clickOrderedListButton: () => getButtonByType('ordered-list-item').click(),
+    clickLinkButton: () => getButtonByType('link').click(),
+    insertLink: async (text, url) => {
+      const textInput = base.$('[data-hook="rich-text-area-link-text"]');
+      const urlInput = base.$('[data-hook="rich-text-area-link-url"]');
+      const submitButton = base.$('[data-hook="rich-text-area-submit-button"]');
+
+      await textInput.enterValue(text);
+      await urlInput.enterValue(url);
+      await submitButton.click();
+    },
   };
 };

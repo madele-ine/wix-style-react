@@ -125,5 +125,19 @@ describe('RichTextInputArea', () => {
 
       expect(currentValue).toBe(expectedText);
     });
+
+    it('should render text as link after inserting required data', async () => {
+      const driver = createDriver(
+        <RichTextInputArea onChange={value => (currentValue = value)} />,
+      );
+      const typedText = 'Link';
+      const typedUrl = 'http://wix.com';
+      const expectedText = `<p><a href=${typedUrl}>${typedText}</a></p>`;
+
+      await driver.clickLinkButton();
+      await driver.insertLink(typedText, typedUrl);
+
+      expect(currentValue).toBe(expectedText);
+    });
   });
 });
