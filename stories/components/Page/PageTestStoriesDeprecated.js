@@ -11,8 +11,8 @@ import { storySettings } from './storySettings';
 import ExampleEmptyState from './ExampleEmptyState';
 import { ExamplePageContainer } from './ExamplePageContainer';
 import { LongTextContent } from './SomeContentComponent';
-import Card from '../../src/Card';
-import Notification from '../../src/Notification';
+import Card from 'wix-style-react/Card';
+import Notification from 'wix-style-react/Notification';
 
 const PageContainer = props => {
   return (
