@@ -170,6 +170,7 @@ const RichTextToolbar = ({
         return (
           <Button
             key={`${index}-${type}`}
+            dataHook={`richtextarea-button-${type.toLowerCase()}`}
             onClick={onClick}
             tooltipText={tooltipText}
             isActive={isActive(type)}
