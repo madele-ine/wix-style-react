@@ -4,25 +4,12 @@ import ReactTestUtils from 'react-dom/test-utils';
 import richTextToolbarDriverFactory from './RichTextToolbar.driver';
 
 const getTextArea = base => base.$('.public-DraftEditor-content');
-const toolbarDriver = async base =>
-  await richTextToolbarDriverFactory(
-    base.$('[data-hook=richtextarea-toolbar]'),
-  );
 
 export default base => {
   return {
     ...baseUniDriverFactory(base),
-    getButtonTypes: async () => (await toolbarDriver(base)).getButtonTypes(),
+    ...richTextToolbarDriverFactory(base.$('[data-hook=richtextarea-toolbar]')),
     getContent: () => base.text(),
-    clickBoldButton: async () => (await toolbarDriver(base)).clickBoldButton(),
-    clickItalicButton: async () =>
-      (await toolbarDriver(base)).clickItalicButton(),
-    clickUnderlineButton: async () =>
-      (await toolbarDriver(base)).clickUnderlineButton(),
-    clickUnorderedListButton: async () =>
-      (await toolbarDriver(base)).clickUnorderedListButton(),
-    clickOrderedListButton: async () =>
-      (await toolbarDriver(base)).clickOrderedListButton(),
     enterText: async text => {
       const textAreaNative = await getTextArea(base).getNative();
 
