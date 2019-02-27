@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Input from '../Input';
 import WixComponent from '../BaseComponents/WixComponent';
 
@@ -10,10 +9,10 @@ class NumberInput extends WixComponent {
 
   _isInRange(value) {
     const { min, max } = this.props;
-    if (min && value < parseFloat(min)) {
+    if (min && value < min) {
       return false;
     }
-    if (max && value > parseFloat(max)) {
+    if (max && value > max) {
       return false;
     }
     return true;
@@ -30,7 +29,7 @@ class NumberInput extends WixComponent {
   _applyChange(operator) {
     const { value, onChange, step } = this.props,
       numberValue = parseFloat(value),
-      numberStep = parseFloat(step),
+      numberStep = step,
       updatedValue = operator(numberValue, numberStep);
     if (onChange && this._isInRange(updatedValue)) {
       this._triggerOnChange(updatedValue);
@@ -89,14 +88,6 @@ class NumberInput extends WixComponent {
 
 NumberInput.propTypes = {
   ...Input.propTypes,
-  /** Minimum value input can have - similar to html5 min attribute */
-  min: PropTypes.number,
-
-  /** Maximum value input can have - similar to html5 max attribute */
-  max: PropTypes.number,
-
-  /** Step steps to increment/decrement - similar to html5 step attribute */
-  step: PropTypes.number,
 };
 
 NumberInput.defaultProps = {

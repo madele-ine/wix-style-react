@@ -1,7 +1,7 @@
 import React from 'react';
 import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
 import NumberInput from './NumberInput';
-import { numberInputPrivateDriverFactory } from './NumberInput.driver.private';
+import { numberInputPrivateDriverFactory } from './NumberInput.private.uni.driver';
 
 describe('NumberInput', () => {
   const createDriver = createUniDriverFactory(numberInputPrivateDriverFactory);

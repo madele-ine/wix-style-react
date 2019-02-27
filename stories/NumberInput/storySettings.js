@@ -7,3 +7,7 @@ export const storySettings = {
   storyName: 'NumberInput',
   dataHook: 'story-number-input',
 };
+
+export const testStories = {
+  numberInputVariations: 'Number Input Variations',
+};

@@ -1,4 +1,4 @@
-import { numberInputDriverFactory as publicDriverFactory } from './NumberInput.driver';
+import { numberInputDriverFactory as publicDriverFactory } from './NumberInput.uni.driver';
 
 export const numberInputPrivateDriverFactory = base => {
   return {

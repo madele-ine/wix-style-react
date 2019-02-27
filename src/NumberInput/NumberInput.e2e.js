@@ -1,29 +1,24 @@
-import {
-  createStoryUrl,
-  waitForVisibilityOf,
-} from 'wix-ui-test-utils/protractor';
+import { createTestStoryUrl } from '../../test/utils/storybook-helpers';
 
 import { eyesItInstance } from '../../test/utils/eyes-it';
-import { numberInputTestkitFactory } from '../../testkit/protractor';
-import { getTestStoryKind, Category } from '../../stories/storiesHierarchy';
+import {
+  storySettings,
+  testStories,
+} from '../../stories/NumberInput/storySettings';
 
 describe('NumberInput', () => {
   const eyes = eyesItInstance();
-  const kind = getTestStoryKind({
-    category: Category.COMPONENTS,
-    storyName: 'NumberInput',
-  });
 
   eyes.it('should render NumberInput with variations', async () => {
-    const driver = numberInputTestkitFactory({ dataHook: 'wsr-input' });
-    const url = createStoryUrl({
-      kind,
-      story: '1. NumberInput different states',
+    const testStoryUrl = testName =>
+      createTestStoryUrl({ ...storySettings, testName });
+
+    const checkTestStory = async testName => {
+      await browser.get(testStoryUrl(testName));
+      await eyes.checkWindow(testName);
+    };
+    eyes.it('should render a box that contains multiple boxes', async () => {
+      await checkTestStory(testStories.numberInputVariations);
     });
-    await browser.get(url);
-    await waitForVisibilityOf(
-      driver.element(),
-      'Cannot find NumberInput component',
-    );
   });
 });
