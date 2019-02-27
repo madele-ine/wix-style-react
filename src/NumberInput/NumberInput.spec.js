@@ -83,4 +83,22 @@ describe('NumberInput', () => {
     await driver.clickOnDecrement();
     expect(onChange).not.toHaveBeenCalled();
   });
+
+  it('should work in controlled mode', async () => {
+    const value = '5';
+    const driver = createDriver(<NumberInput value={value} />);
+    await driver.clickOnIncrement();
+    await driver.clickOnIncrement();
+    await driver.clickOnDecrement();
+    expect(await driver.getValue()).toEqual(value);
+  });
+
+  it('should work in uncontrolled mode', async () => {
+    const onChange = jest.fn();
+    const driver = createDriver(<NumberInput onChange={onChange} />);
+    await driver.clickOnIncrement();
+    expect(onChange.mock.calls[0][0].target).toEqual(
+      expect.objectContaining({ value: '1' }),
+    );
+  });
 });
