@@ -14,6 +14,7 @@ export default base => {
     ...baseUniDriverFactory(base),
     getButtonTypes: async () => (await toolbarDriver(base)).getButtonTypes(),
     getContent: () => base.text(),
+    clickBoldButton: async () => (await toolbarDriver(base)).clickBoldButton(),
     enterText: async text => {
       const textAreaNative = await getTextArea(base).getNative();
 
